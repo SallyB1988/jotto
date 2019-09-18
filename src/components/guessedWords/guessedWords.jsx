@@ -10,6 +10,7 @@ const GuessedWords = (props) => {
     <div data-test='component-guessed-words'>
       {guessedWords.length > 0 ?
         <div data-test='guessed-words'>
+          <h2>Guessed Words</h2>
           <GuessedWordsTable guessedWords={guessedWords} />
         </div>
         :

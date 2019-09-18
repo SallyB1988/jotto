@@ -5,8 +5,8 @@ const GuessedWordsTable = (props) => {
   const { guessedWords } = props;
 
   return (
-    <table data-test='component-table-words'>
-      <thead className='table-head' data-test='table-header'>
+    <table className="table table-sm" data-test='component-table-words'>
+      <thead className='thead-light table-head' data-test='table-header'>
         <tr>
           <th>Guess</th>
           <th>Matching Letters</th>

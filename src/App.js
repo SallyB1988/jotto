@@ -21,9 +21,9 @@ const guessedWords = [
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <h1>JOTTO</h1>
-        <Congrats success={false} />
+        <Congrats success={true} />
         <GuessedWords guessedWords={guessedWords} />
       </div>
     );
