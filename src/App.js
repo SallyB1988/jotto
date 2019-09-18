@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
+import Congrats from './components/congrats/congrats'
 import GuessedWords from './components/guessedWords/guessedWords'
 
 const guessedWords = [
@@ -17,12 +18,16 @@ const guessedWords = [
   }
 ]
 
-function App() {
-  return (
-    <div className="App">
-      <GuessedWords guessedWords={guessedWords} />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>JOTTO</h1>
+        <Congrats success={false} />
+        <GuessedWords guessedWords={guessedWords} />
+      </div>
+    );
+  }
 }
 
 export default App;

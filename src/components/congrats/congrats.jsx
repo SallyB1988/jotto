@@ -9,7 +9,7 @@ const Congrats = (props) => {
     </div >
   )
   return (
-    <div data-test="component-congrats" />
+    <div data-test="component-congrats">Try to guess the secret word</div>
   )
 }
 
