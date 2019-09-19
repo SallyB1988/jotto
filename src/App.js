@@ -7,12 +7,14 @@ import GuessedWords from './components/guessedWords/guessedWords'
 import { getSecretWord } from './actions';
 
 
-class App extends Component {
+export class UnconnectedApp extends Component {
   componentDidMount = () => {
-
+    // get the secret word
+    this.props.getSecretWord();
   }
+
   render() {
-    const { guessedWords, secretWord, success } = this.props;
+    const { guessedWords, success } = this.props;
     return (
       <div className="container">
         <h1 className="title">JOTTO</h1>
@@ -32,4 +34,6 @@ const mapStateToProps = (state) => {
   return { success, guessedWords, secretWord }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(UnconnectedApp);
+// we export the connected app by default here, but we still have access
+// to using the unconnectedApp version in our tests.
