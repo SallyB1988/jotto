@@ -6,15 +6,18 @@ export class UnconnectedInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentGuess: null
+      currentGuess: ''
     }
   }
 
   submitGuessedWord = (e) => {
     e.preventDefault();
     const guessedWord = this.state.currentGuess;
+    this.setState({ currentGuess: '' })
 
-    if (guessedWord && guessedWord.length > 0) this.props.guessWord(guessedWord);
+    if (guessedWord && guessedWord.length > 0) {
+      this.props.guessWord(guessedWord);
+    }
   }
 
   render() {
@@ -49,13 +52,8 @@ export class UnconnectedInput extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  guessWord: () => dispatch(guessWord)
-})
-
 const mapStateToProps = ({ success }) => {
   return { success };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UnconnectedInput);
-// export default connect(mapStateToProps, { guessWord })(Input);
+export default connect(mapStateToProps, { guessWord })(UnconnectedInput);

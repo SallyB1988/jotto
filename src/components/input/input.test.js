@@ -87,7 +87,7 @@ describe('guessWord action creator call', () => {
 
     // add value to input box
     wrapper.setState({ currentGuess: guessedWord })
-    // simulate click
+    // simulate click == need to simulate the prevent default method
     findByTestAttr(wrapper, 'submit-button').simulate('click', { preventDefault: () => { } });
   });
 
@@ -105,5 +105,9 @@ describe('guessWord action creator call', () => {
     // only has one argument.
     const guessWordArg = guessWordMock.mock.calls[0][0];
     expect(guessWordArg).toBe(guessedWord);
+  })
+
+  test('input box clears on submit', () => {
+    expect(wrapper.state('currentGuess')).toBe('');
   })
 })
