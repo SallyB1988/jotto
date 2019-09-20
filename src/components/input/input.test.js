@@ -74,17 +74,36 @@ describe('redux props', () => {
 })
 
 describe('guessWord action creator call', () => {
+  let guessWordMock;
+  let wrapper;
+  const guessedWord = 'train';
 
-  test('guessWord is called when submit button is clicked', () => {
-    const guessWordMock = jest.fn();
+  beforeEach(() => {
+    guessWordMock = jest.fn();
     const props = {
       guessWord: guessWordMock,
-      guessedWord: 'train'
     }
-    const wrapper = shallow(<UnconnectedInput {...props} />);
+    wrapper = shallow(<UnconnectedInput {...props} />);
+
+    // add value to input box
+    wrapper.setState({ currentGuess: guessedWord })
+    // simulate click
+    findByTestAttr(wrapper, 'submit-button').simulate('click', { preventDefault: () => { } });
+  });
+
+  test('calls guessWord when submit button is clicked', () => {
     // check if guessWord function runs when button is clicked
-    findByTestAttr(wrapper, 'submit-button').simulate('click');
     const guessWordCallCount = guessWordMock.mock.calls.length;
     expect(guessWordCallCount).toBe(1);
+  })
+
+  it('calls guessWord with input value as argument', () => {
+    // the ***.mock.calls is an array of arrays. The outer array is the
+    // number of times the mock function was called. Each element in that array
+    // is itself an array of the parameters used when the mock function was
+    // called. In this case we only call the mock function once, and the function
+    // only has one argument.
+    const guessWordArg = guessWordMock.mock.calls[0][0];
+    expect(guessWordArg).toBe(guessedWord);
   })
 })
