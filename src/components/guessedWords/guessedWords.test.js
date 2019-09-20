@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme';
 
-import { findByTestAttr, checkProps } from '../../../test/testUtils'
+import { findByTestAttr, findByComponent, checkProps } from '../../../test/testUtils'
 import GuessedWords from './guessedWords';
 import GuessedWordsTable from '../guessedWordsTable/guessedWordsTable';
 
@@ -38,7 +38,10 @@ describe('if there are no words guessed', () => {
     const instructions = findByTestAttr(wrapper, 'component-instructions');
     expect(instructions.text().length).not.toBe(1);
   });
-
+  test('renders 0 for the total number of guesses', () => {
+    const guessesNumber = findByTestAttr(wrapper, 'number-guesses');
+    expect(guessesNumber.props().children[1]).toBe(0)
+  })
 });
 
 describe('if there are words guessed', () => {
@@ -72,5 +75,9 @@ describe('if there are words guessed', () => {
   test('renders correct number of guessed words', () => {
     const guessed = findByTestAttr(wrapper, 'guessed-words');
     expect(guessed.find(GuessedWordsTable).length).toBe(1);
+  })
+  test('renders the total number of guesses', () => {
+    const guessesNumber = findByTestAttr(wrapper, 'number-guesses');
+    expect(guessesNumber.props().children[1]).toBe(guessedWords.length)
   })
 })

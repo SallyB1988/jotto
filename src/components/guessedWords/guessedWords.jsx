@@ -16,7 +16,9 @@ const GuessedWords = (props) => {
         :
         <div data-test='component-instructions'>
           <h3>Guess a word</h3>
-        </div>}
+        </div>
+      }
+      <h3 data-test='number-guesses' >Words Guessed: {guessedWords.length}</h3>
     </div>
   )
 }
