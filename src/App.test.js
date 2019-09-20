@@ -9,7 +9,6 @@ const setup = (state = {}) => {
   return wrapper
 }
 
-setup();
 
 describe('render', () => {
   let wrapper;

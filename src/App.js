@@ -14,10 +14,11 @@ export class UnconnectedApp extends Component {
   }
 
   render() {
-    const { guessedWords, success } = this.props;
+    const { guessedWords, success, secretWord } = this.props;
     return (
       <div className="container">
         <h1 className="title">JOTTO</h1>
+        <p>{`The secret word is ${secretWord}`} </p>
         <Congrats success={success} />
         <Input />
         <GuessedWords guessedWords={guessedWords} />
@@ -29,6 +30,7 @@ export class UnconnectedApp extends Component {
 const mapDispatchToProps = dispatch => ({
   getSecretWord: () => dispatch(getSecretWord)
 })
+
 const mapStateToProps = (state) => {
   const { success, guessedWords, secretWord } = state;
   return { success, guessedWords, secretWord }
