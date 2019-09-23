@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Input, Form } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { guessWord } from '../../actions';
 
@@ -24,24 +25,22 @@ export class UnconnectedInput extends Component {
     const { success } = this.props;
     const contents = success ? null :
       (
-        <form className="form-inline">
-          <input
+        <Form className="form-inline">
+          <Input
             name="guess-word"
             data-test="input-box"
-            className="mb-2 mx-sm-3"
             type="text"
             value={this.state.currentGuess}
-            onChange={(e) => { this.setState({ currentGuess: e.target.value }) }}
+            onChange={(e) => { this.setState({ currentGuess: e.target.value.toUpperCase() }) }}
             placeholder="enter guess"
           />
-          <button
+          <Button
             data-test="submit-button"
-            className="bgn btn-primary mb-2"
             type="submit"
             onClick={this.submitGuessedWord} >
             Submit
-          </button>
-        </form>
+          </Button>
+        </Form>
       );
 
     return (

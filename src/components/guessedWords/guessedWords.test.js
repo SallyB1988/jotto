@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme';
 
-import { findByTestAttr, findByComponent, checkProps } from '../../../test/testUtils'
+import { findByTestAttr, checkProps } from '../../../test/testUtils'
 import GuessedWords from './guessedWords';
 import GuessedWordsTable from '../guessedWordsTable/guessedWordsTable';
 
@@ -21,11 +21,11 @@ const setup = (props = {}) => {
 
 
 
-test('does not throw warning with expected props', () => {
+xtest('does not throw warning with expected props', () => {
   checkProps(GuessedWords, defaultProps);
 });
 
-describe('if there are no words guessed', () => {
+xdescribe('if there are no words guessed', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = setup({ guessedWords: [] });
@@ -44,7 +44,7 @@ describe('if there are no words guessed', () => {
   })
 });
 
-describe('if there are words guessed', () => {
+xdescribe('if there are words guessed', () => {
   const guessedWords = [
     {
       guessedWord: "train",
@@ -79,5 +79,17 @@ describe('if there are words guessed', () => {
   test('renders the total number of guesses', () => {
     const guessesNumber = findByTestAttr(wrapper, 'number-guesses');
     expect(guessesNumber.props().children[1]).toBe(guessedWords.length)
+  })
+})
+
+xdescribe('giveUp action creator call', () => {
+  let giveUpMock = jest.fn();
+
+  let wrapper = setup({ guessedWords: [] });
+
+  findByTestAttr(wrapper, 'give-up-button').simulate('click', { preventDefault: () => { } });
+
+  test('calls giveUp when give up button is clicked', () => {
+    expect(giveUpMock.mock.calls.length.toBe(1));
   })
 })

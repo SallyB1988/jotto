@@ -5,8 +5,8 @@ const GiveUp = (props) => {
   const { showWord, secretWord } = props;
   return (
     showWord ? (
-      <div className="alert alert-success" data-test="component-congrats" >
-        <span data-test="congrats-message">The word was: {secretWord}</span>
+      <div className="alert alert-success" data-test="component-give-up" >
+        <span data-test="component-show-word">The word was: {secretWord}</span>
       </div >
     ) : (
         null

@@ -25,7 +25,7 @@ export class UnconnectedApp extends Component {
           <Grid.Column width={4} />
           <Grid.Column width={8}>
             <Container textAlign='center'>
-              <h1>JOTTO!</h1>
+              <h1 >JOTTO!</h1>
             </Container>
           </Grid.Column>
           <Grid.Column width={4} />

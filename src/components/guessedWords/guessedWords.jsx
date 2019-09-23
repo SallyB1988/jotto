@@ -31,7 +31,7 @@ const GuessedWords = (props) => {
 
         </Grid.Column>
         <Grid.Column width={8} >
-          <Button onClick={giveUp} >Give Up</Button>
+          <Button data-test='component-give-up-button' onClick={giveUp} >Give Up</Button>
         </Grid.Column>
       </Grid.Row>
     </Grid>
