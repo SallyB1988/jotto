@@ -1,10 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import { Grid, Button } from 'semantic-ui-react';
 
 import GuessedWordsTable from '../guessedWordsTable/guessedWordsTable';
+import { giveUp } from '../../actions';
+
+
 
 const GuessedWords = (props) => {
-  const { guessedWords } = props;
+  const { guessedWords, giveUp } = props;
 
   return (
     <Grid data-test='component-guessed-words'>
@@ -26,12 +31,16 @@ const GuessedWords = (props) => {
 
         </Grid.Column>
         <Grid.Column width={8} >
-          <Button>Give Up</Button>
+          <Button onClick={giveUp} >Give Up</Button>
         </Grid.Column>
       </Grid.Row>
     </Grid>
   )
 }
 
+const mapStateToProps = (state) => {
+  const { success, secretWord, giveUp } = state;
+  return { success, secretWord, giveUp }
+}
 
-export default GuessedWords;
+export default connect(mapStateToProps, { giveUp })(GuessedWords);

@@ -12,17 +12,13 @@ import { getSecretWord } from './actions';
 
 export class UnconnectedApp extends Component {
 
-  state = {
-    giveUp: false
-  }
-
   componentDidMount = () => {
     // get the secret word
     this.props.getSecretWord();
   }
 
   render() {
-    const { guessedWords, success, secretWord } = this.props;
+    const { guessedWords, success, secretWord, giveUp } = this.props;
     return (
       <Grid>
         <Grid.Row>
@@ -39,7 +35,7 @@ export class UnconnectedApp extends Component {
         <Grid.Row>
           <Grid.Column width={2} />
           <Grid.Column width={8}>
-            <p>The secret word is {secretWord}</p>
+            {giveUp ? <p>The secret word is {secretWord}</p> : null}
             <Congrats success={success} />
             <Input />
             <GuessedWords guessedWords={guessedWords} />
