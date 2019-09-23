@@ -5,6 +5,7 @@ export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
   GUESS_WORD: 'GUESS_WORD',
   SET_SECRET_WORD: 'SET_SECRET_WORD',
+  GIVE_UP: 'GIVE_UP',
 };
 
 export const guessWord = (guessedWord) => {
@@ -25,6 +26,14 @@ export const guessWord = (guessedWord) => {
         type: actionTypes.CORRECT_GUESS
       })
     }
+  };
+}
+
+export const giveUp = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.GIVE_UP,
+    });
   };
 }
 

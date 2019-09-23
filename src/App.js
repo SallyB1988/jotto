@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import { Container, Grid, GridRow } from 'semantic-ui-react';
+
+import { Container, Grid } from 'semantic-ui-react';
 
 import Congrats from './components/congrats/congrats'
 import Input from './components/input/input';
@@ -10,6 +11,10 @@ import { getSecretWord } from './actions';
 
 
 export class UnconnectedApp extends Component {
+
+  state = {
+    giveUp: false
+  }
 
   componentDidMount = () => {
     // get the secret word
@@ -22,7 +27,7 @@ export class UnconnectedApp extends Component {
       <Grid>
         <Grid.Row>
           <Grid.Column width={4} />
-          <Grid.Column width={8} >
+          <Grid.Column width={8}>
             <Container textAlign='center'>
               <h1>JOTTO!</h1>
             </Container>
@@ -50,8 +55,8 @@ export class UnconnectedApp extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { success, guessedWords, secretWord } = state;
-  return { success, guessedWords, secretWord }
+  const { success, guessedWords, secretWord, giveUp } = state;
+  return { success, guessedWords, secretWord, giveUp }
 }
 
 export default connect(mapStateToProps, { getSecretWord })(UnconnectedApp);

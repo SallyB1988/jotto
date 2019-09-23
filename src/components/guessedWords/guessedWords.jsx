@@ -7,18 +7,27 @@ const GuessedWords = (props) => {
   const { guessedWords } = props;
 
   return (
-    <Grid data-test="component-guessed-words">
+    <Grid data-test='component-guessed-words'>
       <Grid.Row>
         {guessedWords.length > 0 ?
-          <div data-test='guessed-words' >
+          <div data-test='guessed-words'>
             <h2>Guessed Words</h2>
             <GuessedWordsTable guessedWords={guessedWords} />
           </div>
           :
-          <div data-test='comnponent-instructions'>
+          <div data-test='component-instructions'>
             <h3>Guess a word</h3>
           </div>
         }
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column width={8}>
+          <h3 data-test='number-guesses' >Words Guessed: {guessedWords.length}</h3>
+
+        </Grid.Column>
+        <Grid.Column width={8} >
+          <Button>Give Up</Button>
+        </Grid.Column>
       </Grid.Row>
     </Grid>
   )
