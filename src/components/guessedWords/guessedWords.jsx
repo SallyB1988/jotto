@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Grid, Button } from 'semantic-ui-react';
 
 import GuessedWordsTable from '../guessedWordsTable/guessedWordsTable';
 
@@ -7,19 +7,20 @@ const GuessedWords = (props) => {
   const { guessedWords } = props;
 
   return (
-    <div data-test='component-guessed-words'>
-      {guessedWords.length > 0 ?
-        <div data-test='guessed-words'>
-          <h2>Guessed Words</h2>
-          <GuessedWordsTable guessedWords={guessedWords} />
-        </div>
-        :
-        <div data-test='component-instructions'>
-          <h3>Guess a word</h3>
-        </div>
-      }
-      <h3 data-test='number-guesses' >Words Guessed: {guessedWords.length}</h3>
-    </div>
+    <Grid data-test="component-guessed-words">
+      <Grid.Row>
+        {guessedWords.length > 0 ?
+          <div data-test='guessed-words' >
+            <h2>Guessed Words</h2>
+            <GuessedWordsTable guessedWords={guessedWords} />
+          </div>
+          :
+          <div data-test='comnponent-instructions'>
+            <h3>Guess a word</h3>
+          </div>
+        }
+      </Grid.Row>
+    </Grid>
   )
 }
 

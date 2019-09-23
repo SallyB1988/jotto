@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
+import { Container, Grid, GridRow } from 'semantic-ui-react';
+
 import Congrats from './components/congrats/congrats'
 import Input from './components/input/input';
 import GuessedWords from './components/guessedWords/guessedWords'
@@ -17,13 +19,32 @@ export class UnconnectedApp extends Component {
   render() {
     const { guessedWords, success, secretWord } = this.props;
     return (
-      <div className="container">
-        <h1 className="title">JOTTO</h1>
-        <p>The secret word is {secretWord}</p>
-        <Congrats success={success} />
-        <Input />
-        <GuessedWords guessedWords={guessedWords} />
-      </div>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={4} />
+          <Grid.Column width={8} >
+            <Container textAlign='center'>
+              <h1>JOTTO!</h1>
+            </Container>
+          </Grid.Column>
+          <Grid.Column width={4} />
+        </Grid.Row>
+
+
+        <Grid.Row>
+          <Grid.Column width={2} />
+          <Grid.Column width={8}>
+            <p>The secret word is {secretWord}</p>
+            <Congrats success={success} />
+            <Input />
+            <GuessedWords guessedWords={guessedWords} />
+          </Grid.Column>
+          <Grid.Column width={4}>
+            <h3>Put alphabet here</h3>
+          </Grid.Column>
+          <Grid.Column width={2} />
+        </Grid.Row>
+      </Grid>
     );
   }
 }
