@@ -6,6 +6,7 @@ import { Container, Grid } from 'semantic-ui-react';
 
 import Congrats from './components/congrats/congrats'
 import Input from './components/input/input';
+import LetterTile from './components/letterTile/letterTile';
 import GuessedWords from './components/guessedWords/guessedWords'
 import { getSecretWord } from './actions';
 
@@ -42,6 +43,9 @@ export class UnconnectedApp extends Component {
           </Grid.Column>
           <Grid.Column width={4}>
             <h3>Put alphabet here</h3>
+            <LetterTile />
+            <LetterTile letter="b" />
+            <LetterTile letter="e" />
           </Grid.Column>
           <Grid.Column width={2} />
         </Grid.Row>

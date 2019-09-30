@@ -17,6 +17,7 @@ describe('guessWord action dispatcher', () => {
       const expectedState = {
         ...initialState,
         success: false,
+        giveUp: false,
         guessedWords: [{
           guessedWord: unsuccessfulGuess,
           letterMatchCount: 3
@@ -30,6 +31,7 @@ describe('guessWord action dispatcher', () => {
       const expectedState = {
         ...initialState,
         success: true,
+        giveUp: false,
         guessedWords: [{
           guessedWord: secretWord,
           letterMatchCount: 5
@@ -52,6 +54,7 @@ describe('guessWord action dispatcher', () => {
       const expectedState = {
         secretWord,
         success: false,
+        giveUp: false,
         guessedWords: [
           ...guessedWords,
           {
@@ -68,6 +71,7 @@ describe('guessWord action dispatcher', () => {
       const expectedState = {
         secretWord,
         success: true,
+        giveUp: false,
         guessedWords: [
           ...guessedWords,
           {
