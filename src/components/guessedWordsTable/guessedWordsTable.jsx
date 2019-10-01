@@ -1,28 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Table } from "semantic-ui-react";
 
-const GuessedWordsTable = (props) => {
+const GuessedWordsTable = props => {
   const { guessedWords } = props;
 
   return (
-    <table className="table table-sm" data-test='component-table-words'>
-      <thead className='thead-light table-head' data-test='table-header'>
-        <tr>
-          <th>Guess</th>
-          <th>Matching Letters</th>
-        </tr>
-      </thead>
-      <tbody>
-        {guessedWords.map((word, idx) => (
-          <tr className="guessed-word-row" key={`${word}-${idx}`} data-test='guessed-word-row'>
-            <td>{word.guessedWord}</td>
-            <td>{word.letterMatchCount}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  )
-}
+    <Table celled>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Guessed Word</Table.HeaderCell>
+          <Table.HeaderCell># Matching Letters</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
 
+      <Table.Body>
+        {guessedWords.map((word, idx) => (
+          <Table.Row
+            className="guessed-word-row"
+            key={`${word}-${idx}`}
+            data-test="guessed-word-row"
+          >
+            <Table.Cell>{word.guessedWord}</Table.Cell>
+            <Table.Cell>{word.letterMatchCount}</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
+  );
+};
 
 export default GuessedWordsTable;
