@@ -7,17 +7,23 @@ export class UnconnectedInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentGuess: ''
+      currentGuess: '',
+      errorMessage: ''
     }
   }
 
   submitGuessedWord = (e) => {
     e.preventDefault();
-    const guessedWord = this.state.currentGuess;
-    this.setState({ currentGuess: '' })
 
-    if (guessedWord && guessedWord.length > 0) {
-      this.props.guessWord(guessedWord);
+    const guessedWord = this.state.currentGuess;
+    if (guessedWord.length === 5) {
+      this.setState({ currentGuess: '', errorMessage: '' })
+
+      if (guessedWord && guessedWord.length > 0) {
+        this.props.guessWord(guessedWord);
+      }
+    } else {
+      this.setState({ errorMessage: "Guesses must be 5 characters long." });
     }
   }
 
@@ -25,22 +31,27 @@ export class UnconnectedInput extends Component {
     const { success } = this.props;
     const contents = success ? null :
       (
-        <Form className="form-inline">
-          <Input
-            name="guess-word"
-            data-test="input-box"
-            type="text"
-            value={this.state.currentGuess}
-            onChange={(e) => { this.setState({ currentGuess: e.target.value.toUpperCase() }) }}
-            placeholder="enter guess"
-          />
-          <Button
-            data-test="submit-button"
-            type="submit"
-            onClick={this.submitGuessedWord} >
-            Submit
+        <div>
+          <Form className="form-inline">
+            <Input
+              name="guess-word"
+              data-test="input-box"
+              type="text"
+              value={this.state.currentGuess}
+              onChange={(e) => { this.setState({ currentGuess: e.target.value.toUpperCase() }) }}
+              placeholder="enter guess"
+            />
+            <Button
+              data-test="submit-button"
+              type="submit"
+              onClick={this.submitGuessedWord} >
+              Submit
           </Button>
-        </Form>
+          </Form>
+
+          <div>{this.state.errorMessage}</div>
+
+        </div>
       );
 
     return (
@@ -50,6 +61,7 @@ export class UnconnectedInput extends Component {
     )
   }
 }
+
 
 const mapStateToProps = ({ success }) => {
   return { success };

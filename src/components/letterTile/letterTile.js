@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import { Button } from 'semantic-ui-react';
 
+import './letterTile.css';
+
 const tileColor =
 {
   0: null,
@@ -35,7 +37,7 @@ class LetterTile extends Component {
     const { letter, status } = this.state
     return (
       !!letter ? (
-        <Button color={tileColor[status]} onClick={this.handleClick} >
+        <Button className="tile" color={tileColor[status]} onClick={this.handleClick} >
           {letter}
         </Button >
       ) : (
