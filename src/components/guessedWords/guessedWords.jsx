@@ -19,10 +19,8 @@ const GuessedWords = props => {
             <GuessedWordsTable guessedWords={guessedWords} />
           </div>
         ) : (
-          <div data-test="component-instructions">
-            <h3>Guess a word</h3>
-          </div>
-        )}
+            null
+          )}
       </Grid.Row>
       <Grid.Row>
         <Grid.Column width={8}>
