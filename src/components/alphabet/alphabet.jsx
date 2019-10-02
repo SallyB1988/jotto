@@ -22,9 +22,9 @@ class Alphabet extends Component {
     return (
       <Fragment>
         {
-          this.state.letters.map(l => {
+          this.state.letters.map((l, idx) => {
             return (
-              <LetterTile letter={l.letter} status={l.status} />
+              <LetterTile id={l + idx} letter={l.letter} status={l.status} />
             )
           })
         }

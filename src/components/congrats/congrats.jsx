@@ -1,20 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import "./congrats.css";
 
-const Congrats = (props) => {
+const Congrats = props => {
   const { success } = props;
-  if (success) return (
-    <div className="alert alert-success" data-test="component-congrats" >
-      <span data-test="congrats-message">Congratulations! You guess the word!</span>
-    </div >
-  )
+  if (success)
+    return (
+      <div className="alert alert-success" data-test="component-congrats">
+        <span data-test="congrats-message">
+          Congratulations! You guess the word!
+        </span>
+      </div>
+    );
   return (
-    <div data-test="component-congrats">Try to guess the secret word</div>
-  )
-}
+    <div className="instructions" data-test="component-congrats">
+      Try to guess the secret word. Enter words and you will be told the number
+      of matching letters.
+    </div>
+  );
+};
 
 Congrats.propTypes = {
-  success: PropTypes.bool.isRequired,
-}
+  success: PropTypes.bool.isRequired
+};
 
 export default Congrats;

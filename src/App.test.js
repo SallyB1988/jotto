@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme';
 import { storeFactory, findByComponent } from '../test/testUtils';
 import Congrats from './components/congrats/congrats';
+import Alphabet from './components/alphabet/alphabet';
 import GuessedWords from './components/guessedWords/guessedWords';
 import App, { UnconnectedApp } from './App';
 
@@ -12,25 +13,49 @@ const setup = (state = {}) => {
 }
 
 
-describe('render', () => {
+describe('render at startup, no guessed words, success = false', () => {
   let wrapper;
   beforeEach(() => {
     const initialState = {
       success: false,
       secretWord: 'party',
-      showWord: false
     };
     wrapper = setup(initialState);
   })
   test('renders a title', () => {
     expect(findByComponent(wrapper, 'h1').exists()).toBe(true);
   });
-  test('renders Congrats component', () => {
-    expect(findByComponent(wrapper, <Congrats />).exists()).toBe(true);
+  test('does not render Congrats component when success is false', () => {
+    expect(findByComponent(wrapper, Congrats).exists()).toBe(true);
+    expect(wrapper.find(Congrats).props().success).toBe(false);
   });
-  test('renders GuessedWords component', () => {
-    expect(findByComponent(wrapper, <GuessedWords />).exists()).toBe(true);
+  test('does not render GuessedWords component when guessedWords = null', () => {
+    expect(findByComponent(wrapper, GuessedWords).exists()).toBe(true);
+  })
+  test('renders alphabet component', () => {
+    expect(wrapper.find(Alphabet).exists()).toBe(true);
 
+  })
+});
+
+describe('render with data', () => {
+  let wrapper;
+  beforeEach(() => {
+    const initialState = {
+      success: true,
+      secretWord: 'party',
+      guessedWords: ['hello']
+    };
+    wrapper = setup(initialState);
+  })
+  test('renders Congrats component when success = true', () => {
+    expect(findByComponent(wrapper, Congrats).exists()).toBe(true);
+  });
+  test('renders GuessedWords component when guessedWords is not empty', () => {
+    expect(findByComponent(wrapper, GuessedWords).exists()).toBe(true);
+  })
+  test('renders alphabet component', () => {
+    expect(findByComponent(wrapper, Alphabet).exists()).toBe(true);
   })
 });
 
