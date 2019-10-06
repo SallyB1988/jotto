@@ -13,10 +13,10 @@ const Congrats = props => {
       </div>
     );
   return (
-    <div className="instructions" data-test="component-congrats">
+    <h3 className="instructions" data-test="component-congrats">
       Try to guess the secret word. Enter words and you will be told the number
       of matching letters.
-    </div>
+    </h3>
   );
 };
 

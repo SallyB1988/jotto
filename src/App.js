@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./App.css";
 
-import { Container, Grid } from 'semantic-ui-react';
+import { Container, Grid } from "semantic-ui-react";
 
-import Congrats from './components/congrats/congrats'
-import Input from './components/input/input';
-import LetterTile from './components/letterTile/letterTile';
-import GuessedWords from './components/guessedWords/guessedWords'
-import Alphabet from './components/alphabet/alphabet';
-import { getSecretWord } from './actions';
+import Congrats from "./components/congrats/congrats";
+import Input from "./components/input/input";
+import GuessedWords from "./components/guessedWords/guessedWords";
+import Alphabet from "./components/alphabet/alphabet";
+import { getSecretWord } from "./actions";
 
 export class UnconnectedApp extends Component {
   componentDidMount = () => {

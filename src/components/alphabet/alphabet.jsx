@@ -1,36 +1,62 @@
-import React, { Component, Fragment } from 'react';
-import LetterTile from '../letterTile/letterTile';
+import React, { Component, Fragment } from "react";
+import LetterTile from "../letterTile/letterTile";
 
-
-const letterValues = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+const letterValues = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z"
+];
 
 class Alphabet extends Component {
-
   state = {
     letters: []
   };
 
   componentDidMount() {
     let letters = [];
-    letterValues.map((letter) => {
-      letters.push({ letter, status: 0 })
+    letterValues.forEach(letter => {
+      letters.push({ letter, status: 0 });
     });
-    this.setState({ letters: letters })
+    this.setState({ letters: letters });
   }
 
   render() {
     return (
       <Fragment>
-        {
-          this.state.letters.map((l, idx) => {
-            return (
-              <LetterTile id={l + idx} letter={l.letter} status={l.status} />
-            )
-          })
-        }
+        {this.state.letters.map((l, idx) => {
+          return (
+            <LetterTile
+              key={`${l}-${idx}`}
+              letter={l.letter}
+              status={l.status}
+            />
+          );
+        })}
       </Fragment>
-    )
-
+    );
   }
 }
 

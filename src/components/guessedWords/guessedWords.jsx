@@ -18,9 +18,7 @@ const GuessedWords = props => {
             <h2 className="heading">Guessed Words</h2>
             <GuessedWordsTable guessedWords={guessedWords} />
           </div>
-        ) : (
-            null
-          )}
+        ) : null}
       </Grid.Row>
       <Grid.Row>
         <Grid.Column width={8}>

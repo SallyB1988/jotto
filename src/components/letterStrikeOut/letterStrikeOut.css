@@ -1,0 +1,10 @@
+.letter {
+  float: left;
+  padding: 0px;
+  margin: 0px;
+}
+
+.strike-out {
+  text-decoration-line: line-through;
+  color: red;
+}
