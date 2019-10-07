@@ -13,44 +13,27 @@ const tileColor =
 }
 
 
-class LetterTile extends Component {
-  state = {
-    letter: '',
-    status: 0,
-  }
+function LetterTile(props) {
+  const { letter } = props;
+  const [status, setStatus] = React.useState(0);
 
-  handleClick = () => {
-    let currentStatus = this.state.status;
+
+  const handleClick = () => {
+    let currentStatus = status;
     currentStatus === 2 ? currentStatus = 0 : currentStatus++;
-    this.setState({ status: currentStatus })
+    setStatus(currentStatus);
   }
 
-  componentDidMount = (props) => {
-    if (this.props && this.props.letter) {
-      this.setState({
-        letter: this.props.letter.toUpperCase()
-      })
-    }
-  }
+  return (
+    !!letter ? (
+      <Button className="tile" color={tileColor[status]} onClick={handleClick} >
+        {letter}
+      </Button >
+    ) : (
+        null
+      )
+  )
 
-  render() {
-    const { letter, status } = this.state
-    return (
-      !!letter ? (
-        <Button className="tile" color={tileColor[status]} onClick={this.handleClick} >
-          {letter}
-        </Button >
-      ) : (
-          null
-        )
-    )
-  }
-}
-
-
-LetterTile.propTypes = {
-  letter: PropTypes.string,
-  status: PropTypes.oneOf([0, 1, 2])
 }
 
 export default LetterTile;

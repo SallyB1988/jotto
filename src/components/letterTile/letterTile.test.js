@@ -26,14 +26,13 @@ describe('with props passed', () => {
     const letter = "A";
     const status = 0;
     wrapper = shallow(<LetterTile letter={letter} status={status} />);
-    console.log(wrapper.debug())
+    // console.log(wrapper.debug())
 
 
     // const button = wrapper.find(Button)
-    console.log('yippee')
-
-    console.log(wrapper.debug())
-    console.log('yippee')
+    // 
+    // console.log(wrapper.debug())
+    // console.log('yippee')
     // expect(button.props()).toBe(1)
   });
 });

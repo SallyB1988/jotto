@@ -12,7 +12,7 @@ const defaultProps = {
 const setup = (initialState = {}, props = {}) => {
   const store = storeFactory(initialState);
   const setupProps = { ...defaultProps, ...props }
-  return shallow(<GiveUp store={store} {...setupProps} />).dive().dive();
+  return shallow(<GiveUp store={store} {...setupProps} />);
 }
 
 test('component renders nothing when showWord is false', () => {
@@ -24,5 +24,7 @@ test('component renders nothing when showWord is false', () => {
 test('renders secret word when showWord is true', () => {
   const wrapper = setup({ showWord: true });
   const component = findByTestAttr(wrapper, 'component-show-word');
+
+  console.log(component.debug())
   expect(component.text()).toContain(defaultProps.secretWord);
 });

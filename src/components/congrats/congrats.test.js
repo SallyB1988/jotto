@@ -22,7 +22,7 @@ test('component renders without error', () => {
 test('renders no text when success prop = false', () => {
   const wrapper = setup({ success: false });
   const component = findByTestAttr(wrapper, 'component-congrats');
-  expect(component.text()).toBe('Try to guess the secret word');
+  expect(component.text()).toContain('Try to guess the secret word');
 });
 
 test('renders non-empty congrats message when success prop = true', () => {

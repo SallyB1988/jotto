@@ -29,23 +29,30 @@ export class UnconnectedApp extends Component {
           </Grid.Column>
           <Grid.Column width={4} />
         </Grid.Row>
-
         <Grid.Row>
-          <Grid.Column width={2} />
-          <Grid.Column width={8}>
-            <Congrats success={success} />
-            <Input />
-            <GuessedWords guessedWords={guessedWords} />
-            {giveUp ? (
-              <p className="give-up">
-                The secret word is <span className="secret">{secretWord}</span>
-              </p>
-            ) : null}
-          </Grid.Column>
-          <Grid.Column width={4}>
-            <Alphabet />
-          </Grid.Column>
-          <Grid.Column width={2} />
+          {secretWord ? (
+            <>
+              < Grid.Column width={2} />
+              <Grid.Column width={8}>
+                <Congrats success={success} />
+                <Input />
+                <GuessedWords guessedWords={guessedWords} />
+                {giveUp ? (
+                  <p className="give-up">
+                    The secret word is <span className="secret">{secretWord}</span>
+                  </p>
+                ) : null}
+              </Grid.Column>
+              <Grid.Column width={4}>
+                <Alphabet />
+              </Grid.Column>
+              <Grid.Column width={2} />
+            </>
+          ) : (
+              <Grid.Column>
+                <h3>Must have secret word server running</h3>
+              </Grid.Column>
+            )}
         </Grid.Row>
       </Grid>
     );
